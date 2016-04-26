@@ -10,7 +10,7 @@ namespace StrategyPattern.Roles
     public static class RoleFactory
     {
         #region Properties
-        static string RoleNameSpaceFormat;
+        static string RoleNameSpaceFormat = "StrategyPattern.Roles.{0}";
         #endregion
 
         public static IRole CreateRole(int roleNumber)

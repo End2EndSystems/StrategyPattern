@@ -11,7 +11,7 @@ namespace StrategyPattern.Roles
     {
         public double GetCommission(double value)
         {
-            Console.Write(StringsRes.Commission + ": 15% + 5");
+            Console.WriteLine(StringsRes.Commission + ": 15% + 5");
             return value * 0.15 + 5;
         }
     }

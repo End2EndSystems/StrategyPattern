@@ -39,7 +39,7 @@ namespace StrategyPattern.Resources.Errors {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EnumWithInterfaceImplements.Resources.Errors.ErrorRes", typeof(ErrorRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StrategyPattern.Resources.Errors.ErrorRes", typeof(ErrorRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

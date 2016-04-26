@@ -24,7 +24,7 @@ namespace StrategyPattern
             desc = StringsRes.ResourceManager.GetString(type.Name);
             commission = Role.GetCommission(Value);
 
-            Console.WriteLine(desc);
+            Console.Write("{0}", desc);
 
             return commission;
         }
