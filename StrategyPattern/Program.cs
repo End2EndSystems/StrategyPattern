@@ -25,19 +25,24 @@ namespace StrategyPattern
 
         private static void Run()
         {
-            string readLine = null;
-            int entry = 0;
+            int entry = -1;
+
             do
             {
                 Init();
 
-                readLine = Console.ReadLine();
+                int.TryParse(Console.ReadLine(), out entry);
 
-                entry = int.Parse(readLine);
+                if (entry == 0)
+                {
+                    Console.Write(StringsRes.Exiting);
+                    Thread.Sleep(TimeSpan.FromSeconds(2));
+                    return;
+                }
 
                 Execute(entry);
 
-            } while (readLine != "0");
+            } while (entry != 0);
         }
 
         private static void Init()
@@ -47,35 +52,24 @@ namespace StrategyPattern
             
             foreach (RolesEnum role in Roles)
             {
-                var description = Res.GetString(role.ToString());
-                Console.WriteLine("{0:d}: {1}", role, description);
+                Console.WriteLine("{0:d}: {1}",
+                    role,
+                    Res.GetString(role.ToString()));
             }
 
-            Console.Write("Role:");
+            Console.Write("Role: ");
         }
 
         private static void Execute(int roleType)
         {
-            string readLine = null;
-            Sale sale = null;
-
-            if (roleType == 0)
-            {
-                Console.Write(StringsRes.Exiting);
-                return;
-            }
+            double value = 0.0;
 
             try
             {
-                sale = new Sale();
+                Logger.Log(StringsRes.SaleValue);
 
-                sale.Role = RoleFactory.CreateRole(roleType);
-
-                Console.Write(StringsRes.SaleValue);
-                readLine = Console.ReadLine();
-                sale.Value = Double.Parse(readLine);
-
-                Console.Write(" = " + sale.getCommission());
+                double.TryParse(Console.ReadLine(), out value);
+                new Sale(roleType, value);
             }
             catch (Exception e)
             {

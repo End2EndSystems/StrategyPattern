@@ -2,6 +2,8 @@
 using StrategyPattern.Resources;
 
 using System;
+using StrategyPattern.Util;
+using System.Resources;
 
 namespace StrategyPattern
 {
@@ -11,22 +13,24 @@ namespace StrategyPattern
         //atributos e construtor
         public IRole Role { get; set; }
         public double Value { get; set; }
+        public double Commission { get; set; }
 
-        public Sale() { }
+        private ResourceManager Resource;
 
-        public double getCommission()
+        public Sale(int roleType, double value) {
+            Resource = StringsRes.ResourceManager;
+            Role = RoleFactory.CreateRole(roleType);
+            Value = value;
+            calcCommision();
+        }
+
+        public void calcCommision()
         {
-            string desc = String.Empty;
-            double commission = 0.0;
-            Type type;
-
-            type = Role.GetType();
-            desc = StringsRes.ResourceManager.GetString(type.Name);
-            commission = Role.GetCommission(Value);
-
-            Console.Write("{0}", desc);
-
-            return commission;
+            Commission = Role.GetCommission(Value);
+            var str = String.Format("{0} = {1}",
+                Resource.GetString(Role.GetType().Name),
+                Commission);
+            Logger.Log(str);
         }
     }
 }

@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Errors\ErrorRes.Designer.cs">
@@ -68,6 +67,7 @@
     <Compile Include="Roles\Salesman.cs" />
     <Compile Include="Sale.cs" />
     <Compile Include="Util\EnumUtil.cs" />
+    <Compile Include="Util\Logger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
